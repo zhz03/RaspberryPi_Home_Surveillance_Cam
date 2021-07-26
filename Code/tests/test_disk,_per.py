@@ -17,7 +17,7 @@ def disk_per():
     return: the persentage of free space
     """
     
-    info = os.statvfs("D:")
+    info = os.statvfs("/")
     free_size = info.f_bsize * info.f_bavail
     total_size = info.f_blocks * info.f_bsize 
     percent = round(free_size/total_size * 100)
@@ -39,5 +39,5 @@ def desk_per_Win(path):
     return percent
     
 if __name__ == '__main__':
-    #percent = disk_per()
-    percent = desk_per_Win('F:')
+    percent = disk_per()
+    #percent = desk_per_Win('F:')
