@@ -25,7 +25,7 @@ SPACE_LIMIT=50
 PER_LENGTH = 5 * 60
 
 # location
-LOCATION = '/home/pi/video'
+current_dir = os.getcwd()
 
 def desk_per_Win(path):
     """
@@ -61,8 +61,8 @@ def record():
     return: 
     """
     
-    WIDTH = 640
-    HEIGHT = 480
+    WIDTH = 1280
+    HEIGHT = 720
     FPS = 24.0
     
     # capture video from the default camera
@@ -73,11 +73,11 @@ def record():
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT,HEIGHT)
     # set camera frames, if not, by default is 600 
     cap.set(cv2.CAP_PROP_FPS,FPS)
-    # use XVID coding, quality and size are both considered
-    fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    # use MJPG coding, this will work on Windows
+    fourcc = cv2.VideoWriter_fourcc(*'MJPG')
     
     start_time = datetime.now()
-    filename = LOCATION + start_time.strftime('%Y-%m-%d_%H-%M-%S') + '.avi'
+    filename = current_dir + '/' + start_time.strftime('%Y-%m-%d_%H-%M-%S') + '.avi'
     out = cv2.VideoWriter(filename,fourcc,FPS,(WIDTH,HEIGHT))
     
     flag = True
@@ -89,7 +89,7 @@ def record():
                 out.release()
                 # restart recording new vide
                 start_time = datetime.now()
-                filename = LOCATION + start_time.strftime('%Y-%m-%d_%H-%M-%S') + '.avi'
+                filename = current_dir + '/' + start_time.strftime('%Y-%m-%d_%H-%M-%S') + '.avi'
                 out = cv2.VideoWriter(filename,fourcc,FPS,(WIDTH,HEIGHT))
                 
             else:
@@ -98,7 +98,7 @@ def record():
                     out.write(frame)
         else:
             logger.warn(f'disk space is no more than{SPACE_LIMIT}%,will delete the earliset video file')
-            files = get_files_list(LOCATION + '*.avi')
+            files = get_files_list(current_dir + '/' + '*.avi')
             os.remove(files[0])
             logger.info(f'{files[0]} has been deleted')
             
