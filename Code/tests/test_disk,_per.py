@@ -35,7 +35,7 @@ def desk_per_Win(path):
   
     # Print disk usage statistics
     # rint("Disk usage statistics:")
-    percent = stat[2]/stat[0]
+    percent = round(stat[2]/stat[0]*100)
     return percent
     
 if __name__ == '__main__':
