@@ -2,7 +2,9 @@ import os
 import logzero
 from logzero import logger
 
-logzero.logfile('/home/zhaoliang/Videos/log.log',maxBytes=5e6,backupCount=3)
+current_dir = os.getcwd()
+path_name = current_dir + '/log.log'
+logzero.logfile(path_name,maxBytes=5e6,backupCount=3)
 
 SPACE_LIMIT=90
 
