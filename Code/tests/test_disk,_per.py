@@ -25,7 +25,7 @@ def disk_per():
 
 def desk_per_Win():
     # Path
-    path = "C:/User/Documents"
+    path = "C:"
   
     # Get the disk usage statistics
     # about the given path
