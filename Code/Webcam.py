@@ -13,6 +13,7 @@ from datetime import datetime
 import cv2
 import logzero
 from logzero import logger
+import shutil
 
 # configure logzero to local file, the maximum single file is 5MB, save at most 3 copies
 logzero.logfile('/home/pi/video/log.log',maxBytes=5e6,backupCount=3)
@@ -26,16 +27,19 @@ PER_LENGTH = 5 * 60
 # location
 LOCATION = '/home/pi/video'
 
-def disk_per():
+def desk_per_Win(path):
     """
-    calculate the free space of current space ratio
-    return: the persentage of free space
+    path: the disk that you want to check, example: path = 'C:'
+    return: the percentage of the free space on that disk
     """
-    
-    info = os.statvfs('/')
-    free_size = info.f_bsize * info.f_bavail
-    total_size = info.f_blocks * info.f_bsize 
-    percent = round(free_size/total_size * 100)
+  
+    # Get the disk usage statistics
+    # about the given path
+    stat = shutil.disk_usage(path)
+  
+    # Print disk usage statistics
+    # rint("Disk usage statistics:")
+    percent = round(stat[2]/stat[0]*100)
     return percent
 
 def get_files_list(exp):
@@ -79,7 +83,7 @@ def record():
     flag = True
     while flag:
         # check if the disk space is enough
-        if disk_per() > SPACE_LIMIT:
+        if desk_per_Win('F:') > SPACE_LIMIT:
             if (datetime.now() - start_time).seconds >= PER_LENGTH:
                 logger.info(f'Section recording finish, save file name as {filename}')
                 out.release()
