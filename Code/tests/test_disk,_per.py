@@ -23,18 +23,21 @@ def disk_per():
     percent = round(free_size/total_size * 100)
     return percent
 
-def desk_per_Win():
-    # Path
-    path = "C:"
+def desk_per_Win(path):
+    """
+    path: the disk that you want to check, example: path = 'C:'
+    return: the percentage of the free space on that disk
+    """
   
     # Get the disk usage statistics
     # about the given path
     stat = shutil.disk_usage(path)
   
     # Print disk usage statistics
-    print("Disk usage statistics:")
-    return stat
+    # rint("Disk usage statistics:")
+    percent = stat[2]/stat[0]
+    return percent
     
 if __name__ == '__main__':
     #percent = disk_per()
-    stat = desk_per_Win()
+    percent = desk_per_Win('F:')
