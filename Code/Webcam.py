@@ -94,7 +94,7 @@ def record():
                     out.write(frame)
         else:
             logger.warn(f'disk space is no more than{SPACE_LIMIT}%,will delete the earliset video file')
-            files = get_files_list(LOCATION + '.avi')
+            files = get_files_list(LOCATION + '*.avi')
             os.remove(files[0])
             logger.info(f'{files[0]} has been deleted')
             
