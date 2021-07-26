@@ -24,7 +24,7 @@ SPACE_LIMIT=50
 PER_LENGTH = 5 * 60
 
 # location
-LOCATION = '/home/pi/video'
+LOCATION = '/home/zhaoliang/Videos/'
 
 def disk_per():
     """
