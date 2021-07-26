@@ -23,7 +23,18 @@ def disk_per():
     percent = round(free_size/total_size * 100)
     return percent
 
-
-if __name__ == '__main__':
-    percent = disk_per()
+def desk_per_Win():
+    # Path
+    path = "C:/User/Documents"
+  
+    # Get the disk usage statistics
+    # about the given path
+    stat = shutil.disk_usage(path)
+  
+    # Print disk usage statistics
+    print("Disk usage statistics:")
+    print(stat)
     
+if __name__ == '__main__':
+    #percent = disk_per()
+    desk_per_Win()
