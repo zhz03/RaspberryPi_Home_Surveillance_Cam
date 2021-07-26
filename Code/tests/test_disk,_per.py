@@ -33,8 +33,8 @@ def desk_per_Win():
   
     # Print disk usage statistics
     print("Disk usage statistics:")
-    print(stat)
+    return stat
     
 if __name__ == '__main__':
     #percent = disk_per()
-    desk_per_Win()
+    stat = desk_per_Win()
