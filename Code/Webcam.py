@@ -11,11 +11,14 @@ import glob
 import os 
 from datetime import datetime
 import cv2
+# Use pip to install:
+# "pip install -U logzero"
+# or "pip3 install logzero"
 import logzero
 from logzero import logger
 
 # configure logzero to local file, the maximum single file is 5MB, save at most 3 copies
-logzero.logfile('/home/pi/video/log.log',maxBytes=5e6,backupCount=3)
+logzero.logfile('/home/zhaoliang/Videos/log.log',maxBytes=5e6,backupCount=3)
 
 # constraints the least space limitation percentage
 SPACE_LIMIT=50
