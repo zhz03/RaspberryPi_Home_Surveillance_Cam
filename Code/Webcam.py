@@ -4,6 +4,11 @@ Created on Sun Jul 25 19:32:45 2021
 
 @author: Zhaoliang
 @source: https://blog.csdn.net/lpwmm/article/details/106482845
+
+Clearification: 
+This is a program run on Ubuntu system to use OPENCV to call USB webcam for cyclic recording.
+And it save the video after segmented recording(saving 5mins in the code)
+When the available space is less than 50%, delete the earliest saved video file and then continue the new recording.
 """
 
 
